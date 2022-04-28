@@ -2,30 +2,26 @@
 <html>
 <head>
     <script>
-        function subst() {
-			
-            var p = document.getElementsByClassName("pnumber");
-            
+	function subst() {
+		var p = document.getElementsByClassName("pnumber");
+		var vars={};
+		var x=window.location.search.substring(1).split('&');
+		for (var i in x) {var z=x[i].split('=',2);vars[z[0]] = unescape(z[1]);}
+		var x=['frompage','topage','page','webpage','section','subsection','subsubsection'];
+		for (var i in x) {
+			var y = document.getElementsByClassName(x[i]);
+			for (var j=0; j<y.length; ++j) y[j].textContent = vars[x[i]];
+		}
 
-            var vars={};
-            var x=window.location.search.substring(1).split('&');
-            for (var i in x) {var z=x[i].split('=',2);vars[z[0]] = unescape(z[1]);}
-            var x=['frompage','topage','page','webpage','section','subsection','subsubsection'];
-            for (var i in x) {
-            var y = document.getElementsByClassName(x[i]);
-            for (var j=0; j<y.length; ++j) y[j].textContent = vars[x[i]];
-            }
-
-            var f = document.getElementById('footer');
-            if (vars['page'] == vars['topage'] && vars['topage']> 1) {
-				f.style.display = 'none';
-		    f.style.height = "20%";
-            }
-			else
-			{
-				f.style.display = 'block';
-			}
-        }
+		var f = document.getElementById('footer');
+		if (vars['page'] == vars['topage'] && vars['topage']> 1) {
+			f.style.display = 'none';
+		}
+		else
+		{
+			f.style.display = 'block';
+		}
+	}
     </script>
 </head>
 <body style="border:0; margin: 0;" onload="subst()">
@@ -118,9 +114,6 @@
     <table id="pdfFooter" style="border-bottom: 1px solid black; width: 100%">
         <tr>
             <td class="section"></td>
-            <td>
-               
-            </td>
             <td style="text-align:right">
                 Page <span class="page"></span> of <span class="topage"></span>
             </td>

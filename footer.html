@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script>
+        function subst() {
+			
+            var p = document.getElementsByClassName("pnumber");
+            
+
+            var vars={};
+            var x=window.location.search.substring(1).split('&');
+            for (var i in x) {var z=x[i].split('=',2);vars[z[0]] = unescape(z[1]);}
+            var x=['frompage','topage','page','webpage','section','subsection','subsubsection'];
+            for (var i in x) {
+            var y = document.getElementsByClassName(x[i]);
+            for (var j=0; j<y.length; ++j) y[j].textContent = vars[x[i]];
+            }
+
+            var f = document.getElementById('footer');
+            if (vars['page'] == vars['topage'] && vars['topage']> 1) {
+				p[0].innerText = vars['page'];
+				//f.style.display = 'block';
+            }
+			else
+			{
+				//f.style.display = 'none';
+			}
+        }
+    </script>
+</head>
+<body style="border:0; margin: 0;" onload="subst()">
+    <div id="footer" width="100%" >
+       <table  width="30%" style="border: 1px solid black;float:left;margin: 1%;">
+            <thead>
+                <tr>
+                    <th colspan="2" style="align-content:center">
+                        <b>AUTHORIZED BY</b>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td width="50%" class="tdleft">
+                        <strong>NAME:</strong> <br /><br />
+                        <strong>MINE NO:</strong> <br /><br />
+                        <strong>SIGN:</strong> <br /><br />
+                        <strong>DATE:</strong>
+
+                    </td>
+                    <td width="50%" class="tdleft">
+                        _______________________<br /><br />
+                        _______________________<br /><br />
+                        _______________________<br /><br />
+                        _______________________
+
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table  width="30%" style="border: 1px solid black;float:left;margin: 1%;">
+            <thead>
+                <tr>
+                    <th colspan="2" style="align-content:center">
+                        <b>SECURITY</b>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td width="50%" class="tdleft">
+                        <strong>NAME:</strong> <br /><br />
+                        <strong>MINE NO:</strong> <br /><br />
+                        <strong>SIGN:</strong> <br /><br />
+                        <strong>DATE:</strong>
+                    </td>
+
+                    <td width="50%" class="tdleft">
+                        ______________________<br /><br />
+                        ______________________<br /><br />
+                        ______________________<br /><br />
+                        ______________________
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table  width="34%" style="border: 1px solid black;float:left;margin: 1%;">
+             <thead>
+                 <tr>
+                     <th colspan="2" style="align-content:center">
+                         <b>REPAIRER REPRESENTATIVE</b>
+                     </th>
+                 </tr>
+             </thead>
+             <tbody>
+                 <tr>
+                     <td width="50%" class="tdleft">
+                         <strong>NAME:</strong> <br /><br />
+                         <strong>CONTACT NO:</strong> <br /><br />
+                         <strong>VEHICLE NO:</strong> <br /><br />
+                         <strong>ID NO:</strong> <br /><br />
+                         <strong>SIGN:</strong> <br /><br />
+                         <strong>DATE:</strong>
+                     </td>
+
+                     <td width="50%" class="tdleft">
+                         ____________________<br /><br />
+                         ____________________<br /><br />
+                         ____________________<br /><br />
+                         ____________________<br /><br />
+                         ____________________<br /><br />
+                         ____________________
+                     </td>
+                 </tr>
+             </tbody>
+         </table>
+
+    </div>
+    <table id="pdfFooter" style="border-bottom: 1px solid black; width: 100%">
+        <tr>
+            <td class="section"></td>
+            <td>
+                number <span class="pnumber"></span> 
+            </td>
+            <td style="text-align:right">
+                Page <span class="page"></span> of <span class="topage"></span>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

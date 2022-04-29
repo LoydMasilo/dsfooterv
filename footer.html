@@ -15,19 +15,17 @@
 
 		var f = document.getElementById('footer');
 		if (vars['page'] == vars['topage']) {
-			f.style.display = 'block';
-			f.style.height = "200px";
+			f.style.visibility = "visible";
 		}
 		else
 		{
-			f.style.display = 'none';
-			f.style.height = "0px";
+			f.style.visibility = "hidden";
 		}
 	}
     </script>
 </head>
-<body style="border:0; margin: 0;" onload="subst()">
-    <div id="footer" width="100%" style="display:none" >
+<body style="border:0; margin: 0;bottom:0px" onload="subst()">
+    <div id="footer" width="100%">
        <table  width="30%" style="border: 1px solid black;float:left;margin: 1%;">
             <thead>
                 <tr>
